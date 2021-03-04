@@ -1,0 +1,400 @@
+-- WYKONAWCZY CZYNNOSCI -- 
+
+
+-- dodawanie pracownikow bez numeru mieszkania x4
+insert into Wykonawcy_Czynnosci (KOD_POCZTOWY, MIEJSCOWOSC, ULICA, NUMER_DOMU, SELEKTOR, PESEL, NUMER_DOWODU_OSOBISTEGO, IMIE, NAZWISKO)
+    values ('02-222', 'Krakow', 'Kwiatowa', '31', 'p', '92112384038', '4avd43', 'Marian', 'Pazdich' );
+
+insert into Wykonawcy_Czynnosci (KOD_POCZTOWY, MIEJSCOWOSC, ULICA, NUMER_DOMU, SELEKTOR, PESEL, NUMER_DOWODU_OSOBISTEGO, IMIE, NAZWISKO)
+    values( '32-322', 'Warszawa', 'Milutka', '12', 'p', '78433009487', '8fj3bh', 'Helena', 'Oranzada');
+
+insert into Wykonawcy_Czynnosci (KOD_POCZTOWY, MIEJSCOWOSC, ULICA, NUMER_DOMU, SELEKTOR, PESEL, NUMER_DOWODU_OSOBISTEGO, IMIE, NAZWISKO)
+    values( '11-111', 'Warszawa', 'Ogorkowa', '71', 'p', '87899338274', 'hd74jb', 'Artur', 'Trubador' );
+
+insert into Wykonawcy_Czynnosci (KOD_POCZTOWY, MIEJSCOWOSC, ULICA, NUMER_DOMU, SELEKTOR, PESEL, NUMER_DOWODU_OSOBISTEGO, IMIE, NAZWISKO)
+    values( '03-948', 'Poznan', 'Koziolkowa', '13', 'p', '77899384746', '8fhjue', 'Maciej', 'Makowski');
+    
+-- dodawanie pracownikow z numerem mieszkania x6
+
+insert into Wykonawcy_Czynnosci(KOD_POCZTOWY, MIEJSCOWOSC, ULICA, NUMER_DOMU, NUMER_MIESZKANIA, SELEKTOR, PESEL, NUMER_DOWODU_OSOBISTEGO, IMIE, NAZWISKO)
+    values ('01-384', 'Wroclaw', 'Kawowa', '11a', '14', 'p', '38499227364', '8fhb3d', 'Marta', 'Wenglik');
+
+insert into Wykonawcy_Czynnosci(KOD_POCZTOWY, MIEJSCOWOSC, ULICA, NUMER_DOMU, NUMER_MIESZKANIA, SELEKTOR, PESEL, NUMER_DOWODU_OSOBISTEGO, IMIE, NAZWISKO)
+    values('02-652', 'Warszawa', 'Magazynowa', '13a', '49', 'p', '98122924373', '8fje74', 'Karolina', 'Czarnecka'); 
+
+insert into Wykonawcy_Czynnosci(KOD_POCZTOWY, MIEJSCOWOSC, ULICA, NUMER_DOMU, NUMER_MIESZKANIA, SELEKTOR, PESEL, NUMER_DOWODU_OSOBISTEGO, IMIE, NAZWISKO)
+    values('03-432', 'Krakow', 'Prosta', '11', '24b', 'p', '88980448575', '74hf5s', 'Filip', 'Awandowicz');
+    
+insert into Wykonawcy_Czynnosci(KOD_POCZTOWY, MIEJSCOWOSC, ULICA, NUMER_DOMU, NUMER_MIESZKANIA, SELEKTOR, PESEL, NUMER_DOWODU_OSOBISTEGO, IMIE, NAZWISKO)
+    values('04-378', 'Poznan', 'Kozlawska', '14', '11', 'p', '97844773620', '48hf2j', 'Ageniszka', 'Zolinska');
+
+insert into Wykonawcy_Czynnosci(KOD_POCZTOWY, MIEJSCOWOSC, ULICA, NUMER_DOMU, NUMER_MIESZKANIA, SELEKTOR, PESEL, NUMER_DOWODU_OSOBISTEGO, IMIE, NAZWISKO)
+    values('07-997', 'Gdansk', 'Dobermanska', '9', '97', 'p', '79970398997', '847jfu', 'Mariusz', 'Piesek');
+    
+insert into Wykonawcy_Czynnosci(KOD_POCZTOWY, MIEJSCOWOSC, ULICA, NUMER_DOMU, NUMER_MIESZKANIA, SELEKTOR, PESEL, NUMER_DOWODU_OSOBISTEGO, IMIE, NAZWISKO)
+    values('04-322', 'Suwalki', 'Polna', '11', '21a', 'p', '67855994039', '7f8h99', 'Stanislaw', 'Grechuta');
+
+
+-- Dodajac firme, ustawiasz selektor jako 'f', reszte atrybutow zmieniasz dowolnie, wszystkie sa oprawione podwojnym quotem np. 'dane do wpisania'
+-- Masz na dole wzor dodawania pracownikow, nalezy po prostu go kopiowac ctrl c ctrl v i dodawac wartosci
+-- dodaj firme bez reprezentanta bez numeru mieszkania x3
+insert into Wykonawcy_Czynnosci (KOD_POCZTOWY, MIEJSCOWOSC, ULICA, NUMER_DOMU, SELEKTOR, NAZWA, KOD_NIP, KOD_REGON) 
+    values ('03-984', 'Wroclaw', 'Kwiatkowskiego', '21', 'f', 'Tandb', '0123456789', '0123456');
+    
+insert into Wykonawcy_Czynnosci (KOD_POCZTOWY, MIEJSCOWOSC, ULICA, NUMER_DOMU, SELEKTOR, NAZWA, KOD_NIP, KOD_REGON) 
+    values ('11-032', 'Krakow', 'Krucza', '23', 'f', 'Arriviera', '1843729485', '8f7482j54');
+    
+insert into Wykonawcy_Czynnosci (KOD_POCZTOWY, MIEJSCOWOSC, ULICA, NUMER_DOMU, SELEKTOR, NAZWA, KOD_NIP, KOD_REGON) 
+    values ('07-117', 'Gdansk', 'Lipna', '1', 'f', 'Wooden Manufacturing', '8493840198', '74jdbf94k');
+
+    
+-- dodaj firme z bez reprezentanta z numerem mieszkania x2
+insert into Wykonawcy_Czynnosci (KOD_POCZTOWY, MIEJSCOWOSC, ULICA, NUMER_DOMU, NUMER_MIESZKANIA, SELEKTOR, NAZWA, KOD_NIP, KOD_REGON) 
+    values ('03-984', 'Warszawa', 'Zawiszy', '2', '12a', 'f', 'Dunder Mifflin', '2839246554', '012g55632');
+    
+insert into Wykonawcy_Czynnosci (KOD_POCZTOWY, MIEJSCOWOSC, ULICA, NUMER_DOMU, NUMER_MIESZKANIA, SELEKTOR, NAZWA, KOD_NIP, KOD_REGON) 
+    values ('11-234', 'Warszawa', 'Zawiszy', '2', '12b', 'f', 'Vans refridgerators', '2948738490', '8f7432k55');
+    
+    
+-- dodaj firme z reprezentantem bez numeru mieszkania x4
+
+insert into Wykonawcy_Czynnosci (KOD_POCZTOWY, MIEJSCOWOSC, ULICA, NUMER_DOMU, SELEKTOR, NAZWA, KOD_NIP, KOD_REGON, ID_REPREZENTANTA) 
+    values('23-435', 'Krakow', 'Prostacka', '3', 'f', 'Cracurse', '3hv75bd9jf', '3hf7dhey', 2 );
+
+insert into Wykonawcy_Czynnosci (KOD_POCZTOWY, MIEJSCOWOSC, ULICA, NUMER_DOMU, SELEKTOR, NAZWA, KOD_NIP, KOD_REGON, ID_REPREZENTANTA) 
+    values('02-432', 'Warszawa', 'Uliczna', '17', 'f', 'Wars International', '4839501827', '482745j', 5);
+    
+insert into Wykonawcy_Czynnosci (KOD_POCZTOWY, MIEJSCOWOSC, ULICA, NUMER_DOMU, SELEKTOR, NAZWA, KOD_NIP, KOD_REGON, ID_REPREZENTANTA) 
+    values('11-411', 'Poznan', 'Swiatowa', '11', 'f', 'Kawa distro', '9482750192', '48273hfu4', 3); 
+
+insert into Wykonawcy_Czynnosci (KOD_POCZTOWY, MIEJSCOWOSC, ULICA, NUMER_DOMU, SELEKTOR, NAZWA, KOD_NIP, KOD_REGON, ID_REPREZENTANTA) 
+    values('18-838', 'Warszawa', 'Robocza', '18', 'f', 'Rat City', '1957308493', '4832j5b67', 1);
+
+-- dodaj firme z reprezentantem z numerem mieszkania x3
+insert into Wykonawcy_Czynnosci (KOD_POCZTOWY, MIEJSCOWOSC, ULICA, NUMER_DOMU, NUMER_MIESZKANIA, SELEKTOR, NAZWA, KOD_NIP, KOD_REGON, ID_REPREZENTANTA) 
+    values('21-203', 'Lodz', 'Piotrkowska', '4132a', '111', 'f', 'After 20', '1829384094', '112233445', 7);
+
+insert into Wykonawcy_Czynnosci (KOD_POCZTOWY, MIEJSCOWOSC, ULICA, NUMER_DOMU, NUMER_MIESZKANIA, SELEKTOR, NAZWA, KOD_NIP, KOD_REGON, ID_REPREZENTANTA) 
+    values('18-118', 'Wroclaw', 'Liczebna', '121', '11a', 'f', 'Big Data', '6849302918', '8957c0394', 10); 
+    
+insert into Wykonawcy_Czynnosci (KOD_POCZTOWY, MIEJSCOWOSC, ULICA, NUMER_DOMU, NUMER_MIESZKANIA, SELEKTOR, NAZWA, KOD_NIP, KOD_REGON, ID_REPREZENTANTA) 
+    values('01-001', 'Warszawa', 'Idzikowskiego', '17', '13', 'f', 'USA Ambassy Residence TM', '9384716203', '7f4726h57',  2);
+    
+    
+    
+-- TYPY UMOW -- 
+
+insert into Typy_Umow (KOD_TYPU_UMOWY, NAZWA, OPIS)
+    values('PR01', 'Umowa o prace', 'Umowa o prace miedzy pracodawca a pracownikiem');
+insert into Typy_Umow (KOD_TYPU_UMOWY, NAZWA)
+    values ('DZ01', 'Umowa o dzielo');
+insert into Typy_Umow (KOD_TYPU_UMOWY, NAZWA, OPIS)
+    values ('ZL01', 'Umowa zlecenie', 'Umowa zlecenie miedzy zleceniodawca a zlecenioodbiorca');
+    
+
+
+    
+-- DEFINICJE WLASCIWOSCI --
+
+-- z 8 opis tam gdzie trzeba
+
+insert into Definicje_Wlasciwosci ( KOD_WLASCIWOSCI, NAZWA, OPCJONALNOSC, TYP_DANYCH, OPIS)
+    values( 'Sta01', 'Il_Godz', 'N', 'n', 'Ilosc godzin do przepracowania');
+
+insert into Definicje_Wlasciwosci ( KOD_WLASCIWOSCI, NAZWA, OPCJONALNOSC, TYP_DANYCH, OPIS)
+    values( 'Dat01', 'Dat_kont', 'T', 'd', 'Data spodziewanej kontroli przez nadzorce' );
+    
+insert into Definicje_Wlasciwosci ( KOD_WLASCIWOSCI, NAZWA, OPCJONALNOSC, TYP_DANYCH, OPIS)
+    values( 'Il01', 'Il_Dni', 'N', 'n', 'Ilosc dozwolonych platnych dni urlopu');
+
+insert into Definicje_Wlasciwosci ( KOD_WLASCIWOSCI, NAZWA, OPCJONALNOSC, TYP_DANYCH, OPIS)
+    values( 'Ub01', 'Ub_zdrow', 'T', 'v', 'Czy zapewniono ubezpiecznie zdrowotne tak lub nie');
+
+insert into Definicje_Wlasciwosci ( KOD_WLASCIWOSCI, NAZWA, OPCJONALNOSC, TYP_DANYCH, OPIS)
+    values( 'Wym01', 'Wym_godz', 'N', 'n', 'Ilosc godzin pracy w miesiacu');
+
+insert into Definicje_Wlasciwosci ( KOD_WLASCIWOSCI, NAZWA, OPCJONALNOSC, TYP_DANYCH, OPIS)
+    values( 'Dat02', 'Dat_wyp', 'T', 'd', 'Data wyplaty dla danego wykonawcy czynnosci');
+    
+insert into Definicje_Wlasciwosci ( KOD_WLASCIWOSCI, NAZWA, OPCJONALNOSC, TYP_DANYCH, OPIS)
+    values( 'Nr01', 'Num_tel', 'N', 'n', 'Numer telefonu osoby wykonujacej czynnosc' );
+
+insert into Definicje_Wlasciwosci ( KOD_WLASCIWOSCI, NAZWA, OPCJONALNOSC, TYP_DANYCH, OPIS)
+    values('Adr01', 'Adr_email', 'T', 'v', 'Adres email osoby wykonujacej czynnosc');
+
+insert into Definicje_Wlasciwosci ( KOD_WLASCIWOSCI, NAZWA, OPCJONALNOSC, TYP_DANYCH, OPIS)
+    values ('Nr02', 'Nr_konta', 'T', 'n', 'Numer konta bankowego osoby wykonujacej czynnosc');
+    
+    
+    
+    
+    
+-- Wlasciwosci typow umow --
+
+-- Umowa o prace --
+insert into Wlasciwosci_Typow_Umow (kod_typu_umowy, kod_wlasciwosci)
+    values('PR01', 'Sta01');
+insert into Wlasciwosci_Typow_Umow (kod_typu_umowy, kod_wlasciwosci)
+    values('PR01', 'Il01');
+insert into Wlasciwosci_Typow_Umow (kod_typu_umowy, kod_wlasciwosci)
+    values('PR01', 'Ub01');
+insert into Wlasciwosci_Typow_Umow (kod_typu_umowy, kod_wlasciwosci)
+    values('PR01', 'Nr01');
+insert into Wlasciwosci_Typow_umow (kod_typu_umowy, kod_wlasciwosci)
+    values('PR01', 'Nr02');
+
+-- Umowa zlecenie --
+insert into Wlasciwosci_Typow_Umow (kod_typu_umowy, kod_wlasciwosci)
+    values('ZL01', 'Dat01');
+insert into Wlasciwosci_Typow_Umow (kod_typu_umowy, kod_wlasciwosci)
+    values('ZL01', 'Dat02');
+insert into Wlasciwosci_Typow_Umow (kod_typu_umowy, kod_wlasciwosci)
+    values('ZL01', 'Nr02');
+
+
+-- Umowa o dzielo --
+insert into Wlasciwosci_Typow_Umow (kod_typu_umowy, kod_wlasciwosci)
+    values('DZ01', 'Dat01');
+insert into Wlasciwosci_Typow_Umow (kod_typu_umowy, kod_wlasciwosci)
+    values('DZ01', 'Nr01');
+insert into Wlasciwosci_Typow_Umow (kod_typu_umowy, kod_wlasciwosci)
+    values('DZ01', 'Adr01');
+insert into Wlasciwosci_Typow_Umow (kod_typu_umowy, kod_wlasciwosci)
+    values('DZ01', 'Nr02');
+    
+
+
+
+-- Umowy -- 
+
+-- 5 umowa o prace (pracownik)
+
+insert into Umowy(KOD_TYPU_UMOWY, ID_WYKONAWCY, DATA_ZAWARCIA, TEMAT, KWOTA, POCZATEK_OBOWIAZYWANIA, KONIEC_OBOWIAZYWANIA)
+     values('PR01', '3', TO_DATE('11.12.2017', 'DD.MM.YYYY'), 'Tworzenie rozwiazan technologicznych', '50', TO_DATE('14.12.2017', 'DD.MM.YYYY'), TO_DATE('14.12.2018', 'DD.MM.YYYY'));
+     
+insert into Umowy(KOD_TYPU_UMOWY, ID_WYKONAWCY, DATA_ZAWARCIA, TEMAT, KWOTA, POCZATEK_OBOWIAZYWANIA, KONIEC_OBOWIAZYWANIA)
+     values('PR01', '7', TO_DATE('21.03.2018', 'DD.MM.YYYY'), 'Zarzadzanie zasobami', '40', TO_DATE('1.04.2018', 'DD.MM.YYYY'), TO_DATE('01.04.2020', 'DD.MM.YYYY')); 
+
+insert into Umowy(KOD_TYPU_UMOWY, ID_WYKONAWCY, DATA_ZAWARCIA, TEMAT, KWOTA, POCZATEK_OBOWIAZYWANIA, KONIEC_OBOWIAZYWANIA)
+     values('PR01', '4', TO_DATE('14.07.2019', 'DD.MM.YYYY'), 'Wdrazanie nowych technologii', '80', TO_DATE('01.10.2019', 'DD.MM.YYYY'), TO_DATE('01.10.2024', 'DD.MM.YYYY'));
+     
+
+-- 2 zlecenie (firma)
+
+insert into Umowy(KOD_TYPU_UMOWY, ID_WYKONAWCY, DATA_ZAWARCIA, TEMAT, KWOTA, POCZATEK_OBOWIAZYWANIA, KONIEC_OBOWIAZYWANIA)
+     values('ZL01', '14', TO_DATE('12.12.2012', 'DD.MM.YYYY'), 'Realizacja strony internetowej', '30000', TO_DATE('01.01.2020', 'DD.MM.YYYY'), TO_DATE('01.10.2020', 'DD.MM.YYYY')); 
+
+insert into Umowy(KOD_TYPU_UMOWY, ID_WYKONAWCY, DATA_ZAWARCIA, TEMAT, KWOTA, POCZATEK_OBOWIAZYWANIA, KONIEC_OBOWIAZYWANIA)
+     values('ZL01', '12', TO_DATE('08.11.2017', 'DD.MM.YYYY'), 'Zaopatrzenie do biura', '50000', TO_DATE('14.12.2017', 'DD.MM.YYYY'), TO_DATE('14.02.2018', 'DD.MM.YYYY')); 
+     
+-- 2 zlecenie - pracownicy
+
+insert into Umowy(KOD_TYPU_UMOWY, ID_WYKONAWCY, DATA_ZAWARCIA, TEMAT, KWOTA, POCZATEK_OBOWIAZYWANIA, KONIEC_OBOWIAZYWANIA)
+     values('ZL01', '9', TO_DATE('04.06.2020', 'DD.MM.YYYY'), 'Stworzenie aplikacji', '10000', TO_DATE('14.12.2017', 'DD.MM.YYYY'), TO_DATE('14.12.2018', 'DD.MM.YYYY')); 
+
+insert into Umowy(KOD_TYPU_UMOWY, ID_WYKONAWCY, DATA_ZAWARCIA, TEMAT, KWOTA, POCZATEK_OBOWIAZYWANIA, KONIEC_OBOWIAZYWANIA)
+     values('ZL01', '4', TO_DATE('19.05.2016', 'DD.MM.YYYY'), 'Przygotowanie techniczne komputerow', '5000', TO_DATE('01.06.2016', 'DD.MM.YYYY'), TO_DATE('01.07.2016', 'DD.MM.YYYY'));
+     
+     
+-- 2 o dzielo - firma
+
+insert into Umowy(KOD_TYPU_UMOWY, ID_WYKONAWCY, DATA_ZAWARCIA, TEMAT, KWOTA, POCZATEK_OBOWIAZYWANIA, KONIEC_OBOWIAZYWANIA)
+     values('DZ01', '20', TO_DATE('30-10-2020', 'DD-MM-YYYY'), 'Zaprojektowanie fiycznego modelu produktu', '100000', TO_DATE('05.12.2020', 'DD.MM.YYYY'), TO_DATE('05.06.2021', 'DD.MM.YYYY'));
+     
+insert into Umowy(KOD_TYPU_UMOWY, ID_WYKONAWCY, DATA_ZAWARCIA, TEMAT, KWOTA, POCZATEK_OBOWIAZYWANIA, KONIEC_OBOWIAZYWANIA)
+     values('DZ01', '16', TO_DATE('15-04-2015', 'DD-MM-YYYY'), 'Montaz systemu klimatyzacji', '30000', TO_DATE('30.04.2015', 'DD.MM.YYYY'), TO_DATE('1.05.2015', 'DD.MM.YYYY'));
+
+     
+-- 2 o dzielo - pracownicy
+
+insert into Umowy(KOD_TYPU_UMOWY, ID_WYKONAWCY, DATA_ZAWARCIA, TEMAT, KWOTA, POCZATEK_OBOWIAZYWANIA, KONIEC_OBOWIAZYWANIA)
+     values('DZ01', '10', TO_DATE('18/08/2018', 'DD/MM/YYYY'), 'Sprowadzenie odpowiednich podzespolow', '50000', TO_DATE('30.08.2018', 'DD.MM.YYYY'), TO_DATE('15.10.2018', 'DD.MM.YYYY'));
+     
+insert into Umowy(KOD_TYPU_UMOWY, ID_WYKONAWCY, DATA_ZAWARCIA, TEMAT, KWOTA, POCZATEK_OBOWIAZYWANIA, KONIEC_OBOWIAZYWANIA)
+     values('DZ01', '2', TO_DATE('19/11/2019', 'DD/MM/YYYY'), 'Realizacja prywatnej sieci komputerowej', '5000', TO_DATE('14.12.2019', 'DD.MM.YYYY'), TO_DATE('14.02.2020', 'DD.MM.YYYY'));
+     
+
+    
+-- Wartosci Wlasciwosci --
+
+-- dla pr01 id 1,2,3 wlsc Sta01, Il01, Ub01, Nr01, Nr02
+
+insert into wartosci_wlasciwosci (KOD_TYPU_UMOWY, ID_UMOWY, KOD_WLASCIWOSCI, WARTOSC)
+    values ('PR01', 1, 'Sta01', '40');
+    
+insert into wartosci_wlasciwosci (KOD_TYPU_UMOWY, ID_UMOWY, KOD_WLASCIWOSCI, WARTOSC)
+    values ('PR01', 1, 'Il01', '2');
+    
+insert into wartosci_wlasciwosci (KOD_TYPU_UMOWY, ID_UMOWY, KOD_WLASCIWOSCI, WARTOSC)
+    values ('PR01', 1, 'Ub01', 'T');
+    
+insert into wartosci_wlasciwosci (KOD_TYPU_UMOWY, ID_UMOWY, KOD_WLASCIWOSCI, WARTOSC)
+    values ('PR01', 1, 'Nr01', '666222666');
+
+insert into wartosci_wlasciwosci (KOD_TYPU_UMOWY, ID_UMOWY, KOD_WLASCIWOSCI, WARTOSC)
+    values ('PR01', 1, 'Nr02', '039384748484848484848484');
+
+--
+
+insert into wartosci_wlasciwosci (KOD_TYPU_UMOWY, ID_UMOWY, KOD_WLASCIWOSCI, WARTOSC)
+    values ('PR01', 2, 'Sta01', '40');
+    
+insert into wartosci_wlasciwosci (KOD_TYPU_UMOWY, ID_UMOWY, KOD_WLASCIWOSCI, WARTOSC)
+    values ('PR01', 2, 'Il01', '1');
+    
+insert into wartosci_wlasciwosci (KOD_TYPU_UMOWY, ID_UMOWY, KOD_WLASCIWOSCI, WARTOSC)
+    values ('PR01', 2, 'Ub01', 'N');
+    
+insert into wartosci_wlasciwosci (KOD_TYPU_UMOWY, ID_UMOWY, KOD_WLASCIWOSCI, WARTOSC)
+    values ('PR01', 2, 'Nr01', '283922332');
+
+insert into wartosci_wlasciwosci (KOD_TYPU_UMOWY, ID_UMOWY, KOD_WLASCIWOSCI)
+    values ('PR01', 2, 'Nr02');
+
+--
+
+insert into wartosci_wlasciwosci (KOD_TYPU_UMOWY, ID_UMOWY, KOD_WLASCIWOSCI, WARTOSC)
+    values ('PR01', 3, 'Sta01', '20');
+    
+insert into wartosci_wlasciwosci (KOD_TYPU_UMOWY, ID_UMOWY, KOD_WLASCIWOSCI, WARTOSC)
+    values ('PR01', 3, 'Il01', '0');
+    
+insert into wartosci_wlasciwosci (KOD_TYPU_UMOWY, ID_UMOWY, KOD_WLASCIWOSCI, WARTOSC)
+    values ('PR01', 3, 'Ub01', 'N');
+    
+insert into wartosci_wlasciwosci (KOD_TYPU_UMOWY, ID_UMOWY, KOD_WLASCIWOSCI, WARTOSC)
+    values ('PR01', 3, 'Nr01', '667432944');
+
+insert into wartosci_wlasciwosci (KOD_TYPU_UMOWY, ID_UMOWY, KOD_WLASCIWOSCI, WARTOSC)
+    values ('PR01', 3, 'Nr02', '83838383838383');
+    
+    
+
+-- dla ZL01 id: 4,5,6,7 , kod_w : Dat01, Dat02, Nr02
+
+insert into wartosci_wlasciwosci (KOD_TYPU_UMOWY, ID_UMOWY, KOD_WLASCIWOSCI, WARTOSC)
+    values ('ZL01', 4, 'Dat01', '01.05.2020');
+
+insert into wartosci_wlasciwosci (KOD_TYPU_UMOWY, ID_UMOWY, KOD_WLASCIWOSCI, WARTOSC)
+    values ('ZL01', 4, 'Dat02', '01/11/2020');
+
+insert into wartosci_wlasciwosci (KOD_TYPU_UMOWY, ID_UMOWY, KOD_WLASCIWOSCI, WARTOSC)
+    values ('ZL01', 4, 'Nr02', '54939398400003214');
+
+--
+
+insert into wartosci_wlasciwosci (KOD_TYPU_UMOWY, ID_UMOWY, KOD_WLASCIWOSCI, WARTOSC)
+    values ('ZL01', 5, 'Dat01', '10-01-2018');
+
+insert into wartosci_wlasciwosci (KOD_TYPU_UMOWY, ID_UMOWY, KOD_WLASCIWOSCI, WARTOSC)
+    values ('ZL01', 5, 'Dat02', '01/03/2018');
+
+insert into wartosci_wlasciwosci (KOD_TYPU_UMOWY, ID_UMOWY, KOD_WLASCIWOSCI, WARTOSC)
+    values ('ZL01', 5, 'Nr02', '483193120000432189541');
+
+--
+
+insert into wartosci_wlasciwosci (KOD_TYPU_UMOWY, ID_UMOWY, KOD_WLASCIWOSCI, WARTOSC)
+    values ('ZL01', 6, 'Dat01', '14/06/2018');
+
+insert into wartosci_wlasciwosci (KOD_TYPU_UMOWY, ID_UMOWY, KOD_WLASCIWOSCI, WARTOSC)
+    values ('ZL01', 6, 'Dat02', '06/01/2019');
+
+insert into wartosci_wlasciwosci (KOD_TYPU_UMOWY, ID_UMOWY, KOD_WLASCIWOSCI)
+    values ('ZL01', 6, 'Nr02');
+
+--
+
+insert into wartosci_wlasciwosci (KOD_TYPU_UMOWY, ID_UMOWY, KOD_WLASCIWOSCI)
+    values ('ZL01', 7, 'Dat01');
+
+insert into wartosci_wlasciwosci (KOD_TYPU_UMOWY, ID_UMOWY, KOD_WLASCIWOSCI)
+    values ('ZL01', 7, 'Dat02');
+
+insert into wartosci_wlasciwosci (KOD_TYPU_UMOWY, ID_UMOWY, KOD_WLASCIWOSCI)
+    values ('ZL01', 7, 'Nr02');
+
+
+
+-- dla DZ01 id: 8, 9, 10, 11, kod_w : Dat01, Nr01, Adr01, Nr02
+    
+insert into wartosci_wlasciwosci (KOD_TYPU_UMOWY, ID_UMOWY, KOD_WLASCIWOSCI, WARTOSC)
+    values ('DZ01', 8, 'Dat01', '01/03/2021');
+    
+insert into wartosci_wlasciwosci (KOD_TYPU_UMOWY, ID_UMOWY, KOD_WLASCIWOSCI, WARTOSC)
+    values ('DZ01', 8, 'Nr01', '885994837');
+    
+insert into wartosci_wlasciwosci (KOD_TYPU_UMOWY, ID_UMOWY, KOD_WLASCIWOSCI, WARTOSC)
+    values ('DZ01', 8, 'Adr01', 'dostawca@operator.pl');
+    
+insert into wartosci_wlasciwosci (KOD_TYPU_UMOWY, ID_UMOWY, KOD_WLASCIWOSCI, WARTOSC)
+    values ('DZ01', 8, 'Nr02', '9430243281432143215');
+
+--
+
+insert into wartosci_wlasciwosci (KOD_TYPU_UMOWY, ID_UMOWY, KOD_WLASCIWOSCI)
+    values ('DZ01', 9, 'Dat01');
+    
+insert into wartosci_wlasciwosci (KOD_TYPU_UMOWY, ID_UMOWY, KOD_WLASCIWOSCI, WARTOSC)
+    values ('DZ01', 9, 'Nr01', '847484933');
+    
+insert into wartosci_wlasciwosci (KOD_TYPU_UMOWY, ID_UMOWY, KOD_WLASCIWOSCI)
+    values ('DZ01', 9, 'Adr01');
+    
+insert into wartosci_wlasciwosci (KOD_TYPU_UMOWY, ID_UMOWY, KOD_WLASCIWOSCI)
+    values ('DZ01', 9, 'Nr02');
+
+--
+
+insert into wartosci_wlasciwosci (KOD_TYPU_UMOWY, ID_UMOWY, KOD_WLASCIWOSCI)
+    values ('DZ01', 10, 'Dat01');
+    
+insert into wartosci_wlasciwosci (KOD_TYPU_UMOWY, ID_UMOWY, KOD_WLASCIWOSCI, WARTOSC)
+    values ('DZ01', 10, 'Nr01', '883992883');
+    
+insert into wartosci_wlasciwosci (KOD_TYPU_UMOWY, ID_UMOWY, KOD_WLASCIWOSCI, WARTOSC)
+    values ('DZ01', 10, 'Adr01', 'dostawca@rzeczy.pl');
+    
+insert into wartosci_wlasciwosci (KOD_TYPU_UMOWY, ID_UMOWY, KOD_WLASCIWOSCI, WARTOSC)
+    values ('DZ01', 10, 'Nr02', '7383738393039383738');
+    
+
+--
+
+insert into wartosci_wlasciwosci (KOD_TYPU_UMOWY, ID_UMOWY, KOD_WLASCIWOSCI, WARTOSC)
+    values ('DZ01', 11, 'Dat01', '14/01/2020');
+    
+insert into wartosci_wlasciwosci (KOD_TYPU_UMOWY, ID_UMOWY, KOD_WLASCIWOSCI, WARTOSC)
+    values ('DZ01', 11, 'Nr01', '384738293');
+    
+insert into wartosci_wlasciwosci (KOD_TYPU_UMOWY, ID_UMOWY, KOD_WLASCIWOSCI, WARTOSC)
+    values ('DZ01', 11, 'Adr01', 'realizator@sieci.pl');
+    
+insert into wartosci_wlasciwosci (KOD_TYPU_UMOWY, ID_UMOWY, KOD_WLASCIWOSCI)
+    values ('DZ01', 11, 'Nr02');
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
