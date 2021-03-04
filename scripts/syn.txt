@@ -1,0 +1,11 @@
+CREATE OR REPLACE SYNONYM definicje_wlasciwosci FOR bd2a02.definicje_wlasciwosci;
+
+CREATE OR REPLACE SYNONYM typy_umow FOR bd2a02.typy_umow;
+
+CREATE OR REPLACE SYNONYM umowy FOR bd2a02.umowy;
+
+CREATE OR REPLACE SYNONYM wartosci_wlasciwosci FOR bd2a02.wartosci_wlasciowsci;
+
+CREATE OR REPLACE SYNONYM wlasciwosci_typow_umow FOR bd2a02.wlasciwosci_typow_umow;
+
+CREATE OR REPLACE SYNONYM wykonawcy_czynnosci FOR bd2a02.wykonawcy_czynnosci;

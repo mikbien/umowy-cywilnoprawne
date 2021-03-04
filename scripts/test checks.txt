@@ -1,0 +1,169 @@
+
+spool C:\Users\User\B2A02_DML.LIS
+-- definicje wlasciwosci --
+
+-- 1. zla opcjonalnosc
+insert into definicje_wlasciwosci values ('T01', 'DW_Test01', 'y', 'v', 'test if wrong option goes through');
+insert into definicje_wlasciwosci values('T02', 'DW_Test02', 'x', 'd', 'test if wrong option goes through');
+insert into definicje_wlasciwosci values('T03', 'DW_Test03', 'n', 'n', 'test if only uppercase goes through');
+insert into definicje_wlasciwosci values('T04', 'DW_Test04', 'n', 't', 'test if only uppercase goes through');
+-- 2. zly typ danych
+insert into definicje_wlasciwosci values('T05', 'DW_Test05', 'T', 'c', 'test if wrong type goes through');
+insert into definicje_wlasciwosci values('T06', 'DW_Test06', 'T', 'h', 'test if wrong type goes through');
+insert into definicje_wlasciwosci values('T07', 'DW_Test07', 'N', 'V', 'test if only lowercase goes through');
+insert into definicje_wlasciwosci values('T08', 'DW_Test08', 'N', 'D', 'test if only lowercase goes through');
+insert into definicje_wlasciwosci values('T09', 'DW_Test09', 'N', 'N', 'test if only lowercase goes through');
+
+
+-- typy umow
+
+-- nic
+
+
+-- umowy
+
+-- nic
+
+
+-- wlasciwosci typow umow
+
+-- nic
+
+
+-- wartosci wlasciwosci
+insert into definicje_wlasciwosci values('WT01d', 'WW_Test01date', 'N', 'd', 'test date definition');
+insert into definicje_wlasciwosci values('WT01n', 'WW_Test01num', 'N', 'n', 'test num definition');
+insert into definicje_wlasciwosci values('WT01v', 'WW_Test01varchar', 'T', 'v', 'test varchar definition');
+
+insert into typy_umow values ('WT01', 'WW_Test_Typ_Um', 'test typ_umowy');
+
+insert into wlasciwosci_typow_umow values('WT01', 'WT01d');
+insert into wlasciwosci_typow_umow values('WT01', 'WT01n');
+insert INTO wlasciwosci_typow_umow values('WT01', 'WT01v');
+
+
+-- update kod_wlasciwosci w wlasciwosci_typow_umowy
+UPDATE wlasciwosci_typow_umow
+SET kod_wlasciwosci = 'WT01v'
+WHERE kod_typu_umowy = 'WT01' and kod_wlasciwosci = 'WT01d';
+
+-- update kod_typu_umowy w wlasciwosci_typow_umowy
+UPDATE wlasciwosci_typow_umow
+SET kod_typu_umowy = 'PR01'
+WHERE kod_typu_umowy = 'WT01' and kod_wlasciwosci = 'WT01d';
+
+insert into Umowy(KOD_TYPU_UMOWY, ID_WYKONAWCY, DATA_ZAWARCIA, TEMAT, KWOTA, POCZATEK_OBOWIAZYWANIA, KONIEC_OBOWIAZYWANIA)
+    values('WT01', '1', TO_DATE('01/01/2021', 'dd/mm/yyyy'), 'Test Wart Wlasc', '0', TO_DATE('01/01/2021', 'dd/mm/yyyy'),TO_DATE('01/01/2021', 'dd/mm/yyyy') ); 
+
+
+-- update kod_typu_umowy w umowy
+UPDATE umowy
+SET kod_typu_umowy = 'PR01'
+WHERE id_umowy = 12;
+
+
+-- update id_wykonawcy w umowy
+UPDATE umowy
+SET id_wykonawcy = 3
+WHERE id_umowy = 12;
+
+-- 1. Wartosc pusta a Opcjonalnosc N
+insert into wartosci_wlasciwosci (KOD_TYPU_UMOWY, ID_UMOWY, KOD_WLASCIWOSCI)
+    values('WT01', 12, 'WT01d');
+insert into wartosci_wlasciwosci (KOD_TYPU_UMOWY, ID_UMOWY, KOD_WLASCIWOSCI)
+    values('WT01', 12, 'WT01n');
+
+
+-- 2. zly typ dla daty
+insert into wartosci_wlasciwosci (KOD_TYPU_UMOWY, ID_UMOWY, KOD_WLASCIWOSCI, WARTOSC)
+    values('WT01', 12, 'WT01d', 'test');
+
+insert into wartosci_wlasciwosci (KOD_TYPU_UMOWY, ID_UMOWY, KOD_WLASCIWOSCI, WARTOSC)
+    values('WT01', 12, 'WT01d', '1.1.2001');
+
+insert into wartosci_wlasciwosci (KOD_TYPU_UMOWY, ID_UMOWY, KOD_WLASCIWOSCI, WARTOSC)
+    values('WT01', 12, 'WT01d', '11,11,2017');
+
+insert into wartosci_wlasciwosci (KOD_TYPU_UMOWY, ID_UMOWY, KOD_WLASCIWOSCI, WARTOSC)
+	values('WT01', 12, 'WT01d', '40/40/9000');
+    
+insert into wartosci_wlasciwosci (KOD_TYPU_UMOWY, ID_UMOWY, KOD_WLASCIWOSCI, WARTOSC)
+	values('WT01', 12, 'WT01d', '15/01/2021');
+
+-- 3. zly typ dla num
+	-- a) przyklad dobrych danych i zlych danych
+insert into wartosci_wlasciwosci (KOD_TYPU_UMOWY, ID_UMOWY, KOD_WLASCIWOSCI, WARTOSC)
+	values('WT01', 12, 'WT01d', 'test');
+    
+insert into wartosci_wlasciwosci (KOD_TYPU_UMOWY, ID_UMOWY, KOD_WLASCIWOSCI, WARTOSC)
+    values('WT01', 12, 'WT01d', '17.32.321');
+    
+insert into wartosci_wlasciwosci (KOD_TYPU_UMOWY, ID_UMOWY, KOD_WLASCIWOSCI, WARTOSC)
+    values('WT01', 12, 'WT01d', '17');
+
+insert into wartosci_wlasciwosci (KOD_TYPU_UMOWY, ID_UMOWY, KOD_WLASCIWOSCI, WARTOSC)
+    values('WT01', 12, 'WT01v', 'testy');
+
+
+-- update kod_typu_umowy w wartosci_wlasciwosci
+UPDATE wartosci_wlasciwosci
+SET kod_typu_umowy = 'PR01'
+WHERE kod_typu_umowy = 'WT01' and id_umowy = 12 and kod_wlasciwosci = 'WT01d';
+
+
+-- update id_umowy w wartosci_wlasciwosci
+UPDATE wartosci_wlasciwosci
+SET id_umowy = 1
+WHERE kod_typu_umowy = 'WT01' and id_umowy = 12 and kod_wlasciwosci = 'WT01d';
+
+
+-- update kod_wlasciwosci w wartosci_wlasciwosci
+UPDATE wartosci_wlasciwosci
+SET kod_wlasciwosci = 'WT01v'
+WHERE kod_typu_umowy = 'WT01' and id_umowy = 12 and kod_wlasciwosci = 'WT01d';
+
+-- wykonawcy czynnosci
+
+-- 1. proba dodania danych dla zlego typu
+	-- a) dla pracownika
+
+insert into Wykonawcy_Czynnosci (KOD_POCZTOWY, MIEJSCOWOSC, ULICA, NUMER_DOMU, SELEKTOR, PESEL, NUMER_DOWODU_OSOBISTEGO, IMIE, NAZWISKO, NAZWA)
+    values ('11-111', 'Test', 'Testowa', '31t', 'p', '92112384038', '4avd43', 'Marian', 'Pazdich', 'Test');
+
+insert into Wykonawcy_Czynnosci (KOD_POCZTOWY, MIEJSCOWOSC, ULICA, NUMER_DOMU, SELEKTOR, PESEL, NUMER_DOWODU_OSOBISTEGO, IMIE, NAZWISKO, KOD_NIP)
+    values ('11-111', 'Test', 'Testowa', '31t', 'p', '92112384038', '4avd43', 'Marian', 'Pazdich', '9302839485');
+
+insert into Wykonawcy_Czynnosci (KOD_POCZTOWY, MIEJSCOWOSC, ULICA, NUMER_DOMU, SELEKTOR, PESEL, NUMER_DOWODU_OSOBISTEGO, IMIE, NAZWISKO, KOD_REGON)
+    values ('11-111', 'Test', 'Testowa', '31t', 'p', '92112384038', '4avd43', 'Marian', 'Pazdich', '3928374');
+
+insert into Wykonawcy_Czynnosci (KOD_POCZTOWY, MIEJSCOWOSC, ULICA, NUMER_DOMU, SELEKTOR, PESEL, NUMER_DOWODU_OSOBISTEGO, IMIE, NAZWISKO, ID_REPREZENTANTA)
+    values ('11-111', 'Test', 'Testowa', '31t', 'p', '92112384038', '4avd43', 'Marian', 'Pazdich', 1);
+
+	-- b) dla firmy
+
+insert into Wykonawcy_Czynnosci (KOD_POCZTOWY, MIEJSCOWOSC, ULICA, NUMER_DOMU, SELEKTOR, NAZWA, KOD_NIP, KOD_REGON, PESEL) 
+    values ('12-345', 'Test', 'Kwiatkowskiego', '21t', 'f', 'Test zlych danych', '0123456789', '0123456', '11111111111');
+
+insert into Wykonawcy_Czynnosci (KOD_POCZTOWY, MIEJSCOWOSC, ULICA, NUMER_DOMU, SELEKTOR, NAZWA, KOD_NIP, KOD_REGON, NUMER_DOWODU_OSOBISTEGO) 
+    values ('12-345', 'Test', 'Kwiatkowskiego', '21t', 'f', 'Test zlych danych', '0123456789', '0123456', '38dh42');
+
+insert into Wykonawcy_Czynnosci (KOD_POCZTOWY, MIEJSCOWOSC, ULICA, NUMER_DOMU, SELEKTOR, NAZWA, KOD_NIP, KOD_REGON, Imie) 
+    values ('12-345', 'Test', 'Kwiatkowskiego', '21t', 'f', 'Test zlych danych', '0123456789', '0123456', 'Test');
+
+insert into Wykonawcy_Czynnosci (KOD_POCZTOWY, MIEJSCOWOSC, ULICA, NUMER_DOMU, SELEKTOR, NAZWA, KOD_NIP, KOD_REGON, Nazwisko) 
+    values ('12-345', 'Test', 'Kwiatkowskiego', '21t', 'f', 'Test zlych danych', '0123456789', '0123456', 'Test');
+
+
+  --  2. zla dlugosc kodu regon
+
+insert into Wykonawcy_Czynnosci (KOD_POCZTOWY, MIEJSCOWOSC, ULICA, NUMER_DOMU, SELEKTOR, NAZWA, KOD_NIP, KOD_REGON, PESEL) 
+    values ('12-345', 'Test', 'Kwiatkowskiego', '21t', 'f', 'Test zlych danych', '0123456789', '012345', '11111111111');
+spool off
+
+
+
+
+
+
+@C:\Users\User\BD2A02_DML.SQL
+

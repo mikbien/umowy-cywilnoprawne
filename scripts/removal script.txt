@@ -1,0 +1,7 @@
+--drop table definicje_wlasciwosci, typy_umow, umowy, wartosci_wlasciwosci, wlasciwosci_typow_umow, wykonawcy_czynnosci; 
+drop table definicje_wlasciwosci cascade constraints;
+drop table typy_umow cascade constraints;
+drop table umowy cascade constraints;
+drop table wartosci_wlasciowsci cascade constraints;
+drop table wlasciwosci_typow_umow cascade constraints;
+drop table wykonawcy_czynnosci cascade constraints;

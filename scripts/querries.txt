@@ -1,0 +1,55 @@
+set echo on
+set linesize 300
+set pagesize 500
+spool C:\Users\User\BD2A02_TEST.LIS
+-- 1. imie nazwisko / nazwa wykonawcow czynnosci, ktorzy podpisali wiecej niz 1 umowe
+select l.nazwa, l.imie, l.nazwisko, count(l.id_wykonawcy)
+from wykonawcy_czynnosci l left join umowy p on(l.id_wykonawcy = p.id_wykonawcy)
+group by l.nazwa, l.imie, l.nazwisko
+having( count(l.id_wykonawcy) > 1 )
+order by count(l.id_wykonawcy) asc;
+
+-- 2. podpisywane umowy w zaleznosci od czestotliwosci
+select p.nazwa, count(l.kod_typu_umowy)
+from umowy l left join typy_umow p on (l.kod_typu_umowy = p.kod_typu_umowy)
+group by p.nazwa
+order by count(l.kod_typu_umowy) desc;
+
+
+
+-- 3. 3 najwyzsze wartosci podpisanej umowy o prace
+select d.nazwa as nazwa_firmy, d.imie, d.nazwisko, p.nazwa as nazwa_umowy, l.kwota
+from umowy l left join typy_umow p on (l.kod_typu_umowy = p.kod_typu_umowy)
+left join wykonawcy_czynnosci d on (l.id_wykonawcy = d.id_wykonawcy)
+where l.kod_typu_umowy in ('ZL01', 'DZ01') and rownum <= 3
+order by l.kwota desc;
+
+-- 4. wszystkie umowy, w ktorych kazde opcjonalne pole nie zostalo uzupelnione 
+
+select l.id_umowy, l.temat, count(l.id_umowy) as puste_pola
+from umowy l left join typy_umow p on (l.kod_typu_umowy = p.kod_typu_umowy)
+join wartosci_wlasciwosci a on (l.kod_typu_umowy = a.kod_typu_umowy and l.id_umowy =  a.id_umowy)
+join definicje_wlasciwosci b on (a.kod_wlasciwosci = b.kod_wlasciwosci)
+where(a.wartosc is NULL and b.opcjonalnosc = 'T')
+group by l.id_umowy, l.temat
+order by count(l.id_umowy) desc;
+
+-- 5. wszystkie dostarczone emaile 
+select l.nazwa, l.imie, l.nazwisko, d.wartosc as adres_mailowy
+from wykonawcy_czynnosci l left join umowy p on (l.id_wykonawcy = p.id_wykonawcy)
+join typy_umow t on ( p.kod_typu_umowy = t.kod_typu_umowy )
+join wartosci_wlasciwosci d on(p.id_umowy = d.id_umowy and t.kod_typu_umowy = d.kod_typu_umowy)
+join definicje_wlasciwosci a on( d.kod_wlasciwosci = a.kod_wlasciwosci)
+where (a.kod_wlasciwosci = 'Adr01' and d.wartosc is not NULL);
+
+-- 7. miasta od najczesciej do najrzadziej podawanych jako miejsce zamieszkania
+select l.miejscowosc, count(l.id_wykonawcy) as ilosc_zameldowanych
+from umowy p left join wykonawcy_czynnosci l on(l.id_wykonawcy = p.id_wykonawcy)
+group by l.miejscowosc
+order by count(l.id_wykonawcy) desc;
+-- 8. imie + nazwisko reprezentanta firmy ktora dostala najnizsze wynagrodzenie za wykonanie umowy o dzielo lub umowy zlecenie
+select l.nazwa as firma, c.imie as imie_reprezentanta, c.nazwisko as nazwisko_reprezentanta, p.kwota
+from umowy p left join wykonawcy_czynnosci l on (p.id_wykonawcy = l.id_wykonawcy)
+join wykonawcy_czynnosci c on (c.id_wykonawcy = l.id_reprezentanta)
+where(l.id_reprezentanta is not NULL  and p.kod_typu_umowy in ('DZ01', 'ZL01'));
+spool off
