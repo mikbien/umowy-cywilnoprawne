@@ -1,6 +1,8 @@
 # umowy-cywilnoprawne
 Relational Database's project including an UML diagram, an ERD diagram, an ER diagram and SQL scripts.
 
+This relational database stores information about contracts signed by the owner and involved sides of the contracts.
+
 Scripts:
 * tabs.txt - creates tables to be stored in the database
 * removal script.txt - removes the database
