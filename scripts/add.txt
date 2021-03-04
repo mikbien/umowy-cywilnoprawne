@@ -1,0 +1,89 @@
+
+CREATE OR REPLACE TRIGGER fkntm_umowy BEFORE
+    UPDATE OF kod_typu_umowy, id_wykonawcy 
+    ON umowy FOR EACH ROW
+    WHEN (new.kod_typu_umowy <> old.kod_typu_umowy or new.id_wykonawcy <> old.id_wykonawcy)
+BEGIN
+    raise_application_error(-20225, 'Non Transferable FK constraint  on table Umowy is violated');
+END;
+/
+
+CREATE OR REPLACE TRIGGER fkntm_wartosci_wlasciwosci BEFORE
+    UPDATE OF kod_typu_umowy, id_umowy, kod_wlasciwosci 
+    ON wartosci_wlasciwosci FOR EACH ROW
+    WHEN (new.kod_typu_umowy <> old.kod_typu_umowy or new.kod_wlasciwosci <> old.kod_wlasciwosci or new.id_umowy <> old.id_umowy)
+BEGIN
+    raise_application_error(-20225, 'Non Transferable FK constraint  on table Wartosci_wlasciwosci is violated');
+END;
+/
+
+CREATE OR REPLACE TRIGGER fkntm_wlasciwosci_typow_umow BEFORE
+    UPDATE OF kod_wlasciwosci, kod_typu_umowy 
+    ON wlasciwosci_typow_umow FOR EACH ROW
+    WHEN (new.kod_typu_umowy <> old.kod_typu_umowy or new.kod_wlasciwosci <> old.kod_wlasciwosci)
+BEGIN
+    raise_application_error(-20225, 'Non Transferable FK constraint  on table Wlasciwosci_Typow_Umow is violated');
+END;
+/
+
+CREATE SEQUENCE um_seq START WITH 1 NOCACHE ORDER;
+
+CREATE OR REPLACE TRIGGER um_trig BEFORE
+    INSERT ON umowy
+    FOR EACH ROW
+    WHEN ( new.id_umowy IS NULL )
+BEGIN
+    :new.id_umowy := um_seq.nextval;
+END;
+/
+
+CREATE SEQUENCE wykonawca_id_wykonawcy_seq START WITH 1 NOCACHE ORDER;
+
+CREATE OR REPLACE TRIGGER wykonawca_id_wykonawcy_trg BEFORE
+    INSERT ON wykonawcy_czynnosci
+    FOR EACH ROW
+    WHEN ( new.id_wykonawcy IS NULL )
+BEGIN
+    :new.id_wykonawcy := wykonawca_id_wykonawcy_seq.nextval;
+END;
+/
+
+
+CREATE OR REPLACE TRIGGER check_type_trg BEFORE
+    INSERT or UPDATE ON Wartosci_Wlasciwosci
+    FOR EACH ROW
+    DECLARE
+    --wart_wlasc Wartosci_wlasciwosci.Wartosc%type;
+    typ_dan Definicje_Wlasciwosci.Typ_danych%type;
+BEGIN
+    select Typ_danych into typ_dan from Definicje_Wlasciwosci 
+        where :NEW.Kod_wlasciwosci = Definicje_Wlasciwosci.Kod_wlasciwosci;
+    
+    --select Wartosc into wart_wlasc from Wartosci_wlasciwosci 
+      --  where :NEW.Kod_wlasciwosci = Wartosci_wlasciwosci.Kod_wlasciwosci;
+        
+    IF(     
+          typ_dan = 'n' and REGEXP_LIKE(:NEW.Wartosc, '^[[:digit:]]+$') = False 
+        or
+        -- Adds a validation if a date is of format DD-MM-YYYY or DD/MM/YYYY or DD.MM.YYYY
+          typ_dan = 'd' and not REGEXP_LIKE(:NEW.Wartosc, '[0-3][0-9](\/|-|\.)[0-1][0-9](\/|-|\.)[1-2][0-9][0-9][0-9]')     
+        )then raise_application_error(-20225, 'Typ danych nie zgadza sie z podana wartoscia, check_type_trg zwrocil blad');
+    END IF;
+END;
+/
+
+CREATE OR REPLACE TRIGGER check_opc_trg BEFORE
+    INSERT or UPDATE ON Wartosci_wlasciwosci
+    FOR EACH ROW
+    DECLARE
+--    wart_wlasc Wartosci_wlasciwosci.Wartosc%type;
+    opc Definicje_Wlasciwosci.Opcjonalnosc%type;
+BEGIN
+    select Opcjonalnosc into opc from Definicje_Wlasciwosci 
+        where :NEW.Kod_wlasciwosci = Definicje_Wlasciwosci.Kod_wlasciwosci;
+        
+    IF  opc = 'N' and :NEW.Wartosc is NULL THEN
+        raise_application_error(-20225, 'Wartosc pusta pomimo braku wyboru opcjonalnosci');
+    END IF;
+END;
+/
